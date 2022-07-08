@@ -1,5 +1,5 @@
 // [CONTROLLERS]: In controllers we are processing incoming data (dto) after we are return data or errors to service
 // [MODELS]: Writing fields that must be in the DB
-// [DTO]: What's data we are waiting from DB
+// [DTO]: What's data we are pushing to the DB (in body req)
 // [SERVICES]: Functions wheres you are writing auth, addings smthg etc
 // [INTERFACES]: 
