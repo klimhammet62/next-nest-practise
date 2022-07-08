@@ -12,7 +12,7 @@ import { UserModel } from 'src/user/user.model';
       {
         typegooseClass: UserModel,
         schemaOptions: {
-          collection: 'User',
+          collection: 'registered-users',
         },
       },
     ]),
