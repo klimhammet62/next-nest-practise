@@ -3,6 +3,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { ModelType } from '@typegoose/typegoose/lib/types';
 import { AuthDto } from './dto/auth.dto';
+import { genSalt, hash } from 'bcryptjs';
 
 @Injectable()
 export class AuthService {
@@ -11,9 +12,18 @@ export class AuthService {
 	) {}
 
 	async register(dto: AuthDto) {
-		const oldUser = this.UserModel.findOne({ email: dto.email });
-    if(oldUser) throw new BadRequestException('User with this email already registered')
-		const newUser = new this.UserModel(dto);
+		const oldUser = await this.UserModel.findOne({ email: dto.email });
+
+		if (oldUser)
+			throw new BadRequestException('User with this email already registered');
+
+		const salt = await genSalt(10);
+
+		const newUser = new this.UserModel({
+			email: dto.email,
+			password: await hash(dto.password, salt),
+		});
+
 		return newUser.save();
 	}
 }
