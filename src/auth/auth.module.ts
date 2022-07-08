@@ -9,7 +9,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { getJWTConfig } from 'src/config/jwt.config';
 
 @Module({
-	providers: [AuthService],
+	providers: [AuthService, JwtStrategy],
 	imports: [
 		TypegooseModule.forFeature([
 			{
@@ -26,6 +26,6 @@ import { getJWTConfig } from 'src/config/jwt.config';
 			useFactory: getJWTConfig,
 		}),
 	],
-	controllers: [AuthController, JwtStrategy],
+	controllers: [AuthController],
 })
 export class AuthModule {}
