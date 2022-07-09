@@ -2,4 +2,4 @@
 // [MODELS]: Writing fields that must be in the DB
 // [DTO]: What's data we are pushing to the DB (in body req)
 // [SERVICES]: Functions wheres you are writing auth, addings smthg etc
-// [INTERFACES]: 
+// [INTERFACES]: Here we are writing types for data that we are take from the DB
