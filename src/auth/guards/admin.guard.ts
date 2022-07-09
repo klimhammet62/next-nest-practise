@@ -1,10 +1,10 @@
-import { UserModel } from './../../../dist/user/user.model.d';
 import {
 	CanActivate,
 	ExecutionContext,
 	ForbiddenException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+import { UserModel } from 'src/user/user.model';
 
 export class OnlyAdminGuard implements CanActivate {
 	constructor(private reflector: Reflector) {}
@@ -15,6 +15,6 @@ export class OnlyAdminGuard implements CanActivate {
 
 		if (!user.isAdmin) throw new ForbiddenException('You have no rights =(');
 
-        return user.isAdmin
+		return user.isAdmin;
 	}
 }
